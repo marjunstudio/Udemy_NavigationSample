@@ -14,25 +14,35 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SecondScreen(navigateToFirstScreen: ()-> Unit) {
+fun SecondScreen(
+    name: String,
+    navigateToFirstScreen: (String)-> Unit,
+//    navigateToThirdScreen: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text("2番目の画面", fontSize = 24.sp)
-        Text("ようこそ！！", fontSize = 24.sp)
+        Text("ようこそ！！$name", fontSize = 24.sp)
 
         Button(onClick = {
-            navigateToFirstScreen()
+            navigateToFirstScreen(name)
         }) {
             Text("最初の画面へ")
         }
+
+//        Button(onClick = {
+//            navigateToThirdScreen()
+//        }) {
+//            Text("3番目の画面へ")
+//        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun SecondPreview() {
-    SecondScreen({})
+    SecondScreen("とうふ",{})
 }
